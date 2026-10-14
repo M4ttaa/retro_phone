@@ -1,0 +1,84 @@
+
+@font-face {
+    font-family: nokia;
+    src: url(../assets/fonts/nokiafc22.ttf);
+  }
+body{
+    overflow: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+}
+/* Optional: show position indicator in red */
+::-webkit-scrollbar-thumb {
+    background: #ff000000;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: nokia;
+    box-sizing: border-box;
+}
+
+.phone-frame{
+    display: none;
+    width: 650px;
+    height: 650px;
+    position: absolute;
+    right: 0;
+    bottom: 5%;
+    background-image: url('https://cdn.discordapp.com/attachments/873310291973271573/887222084000968734/phone.png');
+}
+
+#delete-dial{
+    z-index: 200000;
+}
+
+.phone-frame-wrapper{
+    padding: 314px 260px;
+}
+
+.box{
+    width: 120px;
+    min-height: 55px;
+    max-height: 55px;
+    padding: 5px;
+    overflow: auto;
+}
+
+.dials-box{
+
+
+    width: 100%;
+    margin-top: 2.3rem;
+    min-height: 175px;
+    max-height: 175px;
+
+    overflow: auto;
+}
+
+.dials-group{
+    height: 28px;
+    width: 100%;
+    display: flex;
+    
+}
+
+.dial{
+
+    width: 30px;
+    height: 100%;
+    margin: 0 1px;    
+}
+
+.icon-sm{
+    font-size:15px;
+    
+}
+
+.text-extra-sm{
+    font-size: 9px;
+}
