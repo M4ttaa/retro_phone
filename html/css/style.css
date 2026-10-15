@@ -1,84 +1,180 @@
-
 @font-face {
     font-family: nokia;
     src: url(../assets/fonts/nokiafc22.ttf);
-  }
-body{
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
     overflow: hidden;
+    user-select: none;          /* drag-selecting can scroll the page */
+}
+
+input {
+    user-select: text;
 }
 
 ::-webkit-scrollbar {
-    width: 0;  /* Remove scrollbar space */
-    background: transparent;  /* Optional: just make scrollbar invisible */
+    width: 0;
+    background: transparent;
 }
-/* Optional: show position indicator in red */
+
 ::-webkit-scrollbar-thumb {
     background: #ff000000;
 }
 
-*{
+* {
     margin: 0;
     padding: 0;
     font-family: nokia;
     box-sizing: border-box;
 }
 
-.phone-frame{
+/* ---------- phone body (image loaded locally: html/assets/phone.png) ---------- */
+
+.phone-frame {
     display: none;
     width: 650px;
     height: 650px;
     position: absolute;
     right: 0;
     bottom: 5%;
-    background-image: url('https://cdn.discordapp.com/attachments/873310291973271573/887222084000968734/phone.png');
+    background-image: url('../assets/phone.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
-#delete-dial{
-    z-index: 200000;
-}
-
-.phone-frame-wrapper{
+.phone-frame-wrapper {
     padding: 314px 260px;
 }
 
-.box{
+/* ---------- green screen ---------- */
+
+.box {
     width: 120px;
     min-height: 55px;
     max-height: 55px;
     padding: 5px;
-    overflow: auto;
+    overflow: hidden;
+    overflow: clip;             /* cannot be scrolled, even programmatically */
 }
 
-.dials-box{
+.line {
+    font-size: 9px;
+    font-weight: normal;
+    line-height: 11px;
+}
 
+.text-extra-sm {
+    font-size: 9px;
+}
 
+.row {
+    display: flex;
+    align-items: center;
+}
+
+.icon-sm {
+    font-size: 15px;
+    margin-right: 2px;
+}
+
+.dials-input {
+    font-size: 12px;
+    padding: 6px 3px;
+}
+
+/* soft keys along the bottom of the screen */
+.softkey {
+    position: absolute;
+    bottom: 0;
+    font-size: 9px;
+    font-weight: normal;
+    line-height: 11px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.sk-left  { left: 5px; }
+.sk-mid   { left: 50%; transform: translateX(-50%); }
+.sk-right { right: 5px; }
+
+/* scrollable list (menu, contacts, history) */
+.list {
+    position: relative;
+    max-height: 33px;           /* 3 rows */
+    overflow: hidden;           /* scrolled by moving the selection only */
+}
+
+.item {
+    height: 11px;
+    line-height: 11px;
+    font-size: 9px;
+    padding: 0 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+}
+
+.item.selected {
+    background: rgba(0, 0, 0, 0.8);
+    color: #b7c98f;
+}
+
+/* text inputs (add contact) */
+.field {
+    display: block;
+    width: 100%;
+    height: 11px;
+    margin-bottom: 2px;
+    font-size: 9px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    outline: none;
+    color: inherit;
+}
+
+.field::placeholder {
+    color: inherit;
+    opacity: 0.45;
+}
+
+/* short message overlay (errors) */
+.flash {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0 5px;
+    height: 13px;
+    line-height: 13px;
+    font-size: 9px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #b7c98f;
+}
+
+/* ---------- keypad ---------- */
+
+.dials-box {
     width: 100%;
     margin-top: 2.3rem;
     min-height: 175px;
     max-height: 175px;
-
     overflow: auto;
 }
 
-.dials-group{
+.dials-group {
     height: 28px;
     width: 100%;
     display: flex;
-    
 }
 
-.dial{
-
+.dial {
     width: 30px;
     height: 100%;
-    margin: 0 1px;    
-}
-
-.icon-sm{
-    font-size:15px;
-    
-}
-
-.text-extra-sm{
-    font-size: 9px;
+    margin: 0 1px;
 }
